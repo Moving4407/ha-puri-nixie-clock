@@ -236,7 +236,9 @@ ha-puri-nixie-clock/
     config_flow.py  switch.py  select.py  sensor.py
     diagnostics.py  icons.json  strings.json
     translations/en.json  translations/nl.json
+    brand/icon.png                # required by the HACS validation
   scripts/probe_clock.py          # phase 0, read-only
+  scripts/make_icon.py            # generates brand/icon.png
   docs/clock-probe-report.md      # phase 0 output
   tests/                          # pytest, fixtures with recorded clock responses
   .github/workflows/validate.yml  # hacs + hassfest
@@ -353,8 +355,8 @@ automatic brightness sets a value that matches the current sun elevation (check 
 ### Phase 3 — Diagnostics, polish
 
 - [ ] `diagnostics.py`, `icons.json`.
-- [ ] README (installation via HACS, entities, automation example for switching off at night, security
-      notes, the serial-number identity).
+- [x] README (installation via HACS, entities, automation example for switching off at night, security
+      notes, the serial-number identity), written early because the HACS validation requires it.
 - [ ] Full test suite, `hassfest` and HACS validation locally or in CI.
 
 Gate: `pytest`, `ruff`, `hassfest` and HACS validation all pass.
