@@ -1,0 +1,130 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect your Puri Nixie Clock",
+        "description": "Enter the address of the clock on your network. The Local API has no authentication, so only use this on a trusted network.",
+        "data": {
+          "host": "Host",
+          "port": "Port"
+        },
+        "data_description": {
+          "host": "IP address or hostname of the clock. A fixed address is recommended.",
+          "port": "Local API port, normally 88."
+        }
+      },
+      "reconfigure": {
+        "title": "Change the address of the clock",
+        "description": "Enter the new address of this clock.",
+        "data": {
+          "host": "Host",
+          "port": "Port"
+        },
+        "data_description": {
+          "host": "IP address or hostname of the clock.",
+          "port": "Local API port, normally 88."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not connect to the clock. Check the address and that the clock is on.",
+      "invalid_response": "The device answered, but not like a Puri Nixie Clock.",
+      "unsupported_model": "This clock model is not supported. Only the Puri 4-tube and 6-tube are."
+    },
+    "abort": {
+      "already_configured": "This clock is already configured.",
+      "wrong_device": "This is a different clock than the one being reconfigured.",
+      "reconfigure_successful": "The address of the clock was updated."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Puri Nixie Clock options",
+        "data": {
+          "scan_interval": "Polling interval (seconds)",
+          "display_on_day": "Brightness when switched on (day)",
+          "display_on_night": "Brightness when switched on (night)",
+          "min_value": "Automatic brightness: darkest step",
+          "max_value": "Automatic brightness: brightest step",
+          "min_elevation": "Automatic brightness: sun elevation for the darkest step (°)",
+          "max_elevation": "Automatic brightness: sun elevation for the brightest step (°)"
+        },
+        "data_description": {
+          "scan_interval": "How often the clock is read, from 15 to 300 seconds.",
+          "display_on_day": "Used when the display is switched on and there is no remembered or automatic brightness.",
+          "display_on_night": "Same, for the night value.",
+          "min_value": "Lowest brightness automatic brightness uses. Switching the display off is done with the display switch.",
+          "max_value": "Highest brightness automatic brightness uses.",
+          "min_elevation": "At or below this solar elevation the darkest step is used.",
+          "max_elevation": "At or above this solar elevation the brightest step is used."
+        }
+      }
+    },
+    "error": {
+      "value_range": "The darkest step must not be brighter than the brightest step.",
+      "elevation_range": "The elevation for the darkest step must be lower than the one for the brightest step."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "displayed_value": {
+        "name": "Displayed value"
+      },
+      "wifi_signal": {
+        "name": "Wi-Fi signal"
+      }
+    },
+    "switch": {
+      "display": {
+        "name": "Display"
+      },
+      "auto_brightness": {
+        "name": "Automatic brightness"
+      }
+    },
+    "select": {
+      "brightness_day": {
+        "name": "Brightness (day)",
+        "state": {
+          "off": "Off",
+          "very_low": "Very low",
+          "low": "Low",
+          "medium": "Medium",
+          "high": "High",
+          "full": "Full"
+        }
+      },
+      "brightness_night": {
+        "name": "Brightness (night)",
+        "state": {
+          "off": "Off",
+          "very_low": "Very low",
+          "low": "Low",
+          "medium": "Medium",
+          "high": "High",
+          "full": "Full"
+        }
+      }
+    }
+  },
+  "selector": {
+    "brightness_step": {
+      "options": {
+        "very_low": "Very low",
+        "low": "Low",
+        "medium": "Medium",
+        "high": "High",
+        "full": "Full"
+      }
+    }
+  },
+  "exceptions": {
+    "write_failed": {
+      "message": "Could not change the clock: {error}"
+    },
+    "write_not_applied": {
+      "message": "The clock did not accept {param} = {value}."
+    }
+  }
+}

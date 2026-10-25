@@ -1,0 +1,130 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Verbind je Puri Nixie Clock",
+        "description": "Vul het adres van de klok in je netwerk in. De lokale API heeft geen authenticatie, gebruik dit dus alleen op een vertrouwd netwerk.",
+        "data": {
+          "host": "Host",
+          "port": "Poort"
+        },
+        "data_description": {
+          "host": "IP-adres of hostnaam van de klok. Een vast adres wordt aangeraden.",
+          "port": "Poort van de lokale API, normaal 88."
+        }
+      },
+      "reconfigure": {
+        "title": "Wijzig het adres van de klok",
+        "description": "Vul het nieuwe adres van deze klok in.",
+        "data": {
+          "host": "Host",
+          "port": "Poort"
+        },
+        "data_description": {
+          "host": "IP-adres of hostnaam van de klok.",
+          "port": "Poort van de lokale API, normaal 88."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kan geen verbinding maken met de klok. Controleer het adres en of de klok aan staat.",
+      "invalid_response": "Het apparaat antwoordde, maar niet zoals een Puri Nixie Clock.",
+      "unsupported_model": "Dit klokmodel wordt niet ondersteund. Alleen de Puri met 4 of 6 buizen."
+    },
+    "abort": {
+      "already_configured": "Deze klok is al ingesteld.",
+      "wrong_device": "Dit is een andere klok dan die je opnieuw instelt.",
+      "reconfigure_successful": "Het adres van de klok is bijgewerkt."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opties voor de Puri Nixie Clock",
+        "data": {
+          "scan_interval": "Ververstijd (seconden)",
+          "display_on_day": "Helderheid bij inschakelen (dag)",
+          "display_on_night": "Helderheid bij inschakelen (nacht)",
+          "min_value": "Automatische helderheid: donkerste stand",
+          "max_value": "Automatische helderheid: helderste stand",
+          "min_elevation": "Automatische helderheid: zonshoogte voor de donkerste stand (°)",
+          "max_elevation": "Automatische helderheid: zonshoogte voor de helderste stand (°)"
+        },
+        "data_description": {
+          "scan_interval": "Hoe vaak de klok wordt uitgelezen, van 15 tot 300 seconden.",
+          "display_on_day": "Wordt gebruikt bij het inschakelen van het display als er geen onthouden of automatische helderheid is.",
+          "display_on_night": "Hetzelfde, voor de nachtwaarde.",
+          "min_value": "Laagste helderheid die automatische helderheid gebruikt. Het display uitzetten doe je met de displayschakelaar.",
+          "max_value": "Hoogste helderheid die automatische helderheid gebruikt.",
+          "min_elevation": "Bij of onder deze zonshoogte wordt de donkerste stand gebruikt.",
+          "max_elevation": "Bij of boven deze zonshoogte wordt de helderste stand gebruikt."
+        }
+      }
+    },
+    "error": {
+      "value_range": "De donkerste stand mag niet helderder zijn dan de helderste stand.",
+      "elevation_range": "De zonshoogte voor de donkerste stand moet lager zijn dan die voor de helderste stand."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "displayed_value": {
+        "name": "Getoonde waarde"
+      },
+      "wifi_signal": {
+        "name": "Wifi-signaal"
+      }
+    },
+    "switch": {
+      "display": {
+        "name": "Display"
+      },
+      "auto_brightness": {
+        "name": "Automatische helderheid"
+      }
+    },
+    "select": {
+      "brightness_day": {
+        "name": "Helderheid (dag)",
+        "state": {
+          "off": "Uit",
+          "very_low": "Zeer laag",
+          "low": "Laag",
+          "medium": "Gemiddeld",
+          "high": "Hoog",
+          "full": "Vol"
+        }
+      },
+      "brightness_night": {
+        "name": "Helderheid (nacht)",
+        "state": {
+          "off": "Uit",
+          "very_low": "Zeer laag",
+          "low": "Laag",
+          "medium": "Gemiddeld",
+          "high": "Hoog",
+          "full": "Vol"
+        }
+      }
+    }
+  },
+  "selector": {
+    "brightness_step": {
+      "options": {
+        "very_low": "Zeer laag",
+        "low": "Laag",
+        "medium": "Gemiddeld",
+        "high": "Hoog",
+        "full": "Vol"
+      }
+    }
+  },
+  "exceptions": {
+    "write_failed": {
+      "message": "Kon de klok niet aanpassen: {error}"
+    },
+    "write_not_applied": {
+      "message": "De klok nam {param} = {value} niet aan."
+    }
+  }
+}

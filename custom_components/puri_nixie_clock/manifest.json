@@ -1,0 +1,13 @@
+{
+  "domain": "puri_nixie_clock",
+  "name": "Puri Nixie Clock",
+  "codeowners": ["@Moving4407"],
+  "config_flow": true,
+  "dependencies": ["sun"],
+  "documentation": "https://github.com/Moving4407/ha-puri-nixie-clock",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/Moving4407/ha-puri-nixie-clock/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}
